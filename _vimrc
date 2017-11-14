@@ -136,8 +136,3 @@ set hlsearch
 set incsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'scrooloose/nerdtree'
-
-call plug#end()
