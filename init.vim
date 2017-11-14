@@ -1,12 +1,16 @@
 ﻿""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python3_host_prog='C:\python35\python.exe'
 scriptencoding utf-8
+let g:python3_host_prog='C:\python35\python.exe'
 filetype plugin on
 filetype indent on
 let mapleader = ","
 let g:mapleader = ","
+set nobackup
+set noswapfile
+set autoread
+set hidden
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -15,7 +19,7 @@ let g:mapleader = ","
 set display=lastline
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-set showmatch 
+set showmatch
 set mat=2
 set noerrorbells
 set novisualbell
@@ -23,12 +27,13 @@ set t_vb=
 set tm=500
 syntax on
 set expandtab
-set number 
+set number
 set title
-set noshowmode 
+set noshowmode
 set matchtime=1
 set pumheight=10
 set background=dark
+set wildmode=list:longest
 set cursorline
 set t_Co=256
 colorscheme tender
@@ -76,8 +81,8 @@ map <leader>t<leader> :tabnext
 " => Status line
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ 
-               \\ CWD:\ %r%{getcwd()}%h\ \ 
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\
+               \\ CWD:\ %r%{getcwd()}%h\ \
                \\ Line:\ %l\ \ Column:\ %c
 
 
@@ -101,7 +106,7 @@ endfun
 
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,
-                       \*.json,*.css,*.scss 
+                       \*.json,*.css,*.scss
                        \ :call CleanExtraSpaces()
 endif
 
@@ -195,7 +200,6 @@ endif
 "    call dein#save_state()
 "endif
 
-filetype plugin indent on
 syntax enable
 
 " NERDTree
@@ -206,11 +210,11 @@ let NERDTreeDirArrows = 1
 autocmd bufenter * if (winnr("$") == 1 &&
             \exists ("b:NERDTreeType") &&
             \ b:NERDTreeType == "primary") | q | endif
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)  
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
     exec 'autocmd filetype nerdtree highlight '
-        \ . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg  
+        \ . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
     exec 'autocmd filetype nerdtree syn match '
-        \ . a:extension .' #^\s\+.*'. a:extension .'$#' 
+        \ . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 " Flat UI Colors: #8e44ad #95a5a6 #27ae60 #d35400 #f39c12 #f1c40f #16a085
 " Flat UI Colors: #1abc9c #2ecc71 #3498db #9b59b6 #ecf0f1 #7f8c8d
