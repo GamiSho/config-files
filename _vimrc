@@ -14,7 +14,7 @@ filetype indent on
 let mapleader = ","
 let g:mapleader = ","
 
-"Display
+" Display
 set display=lastline
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
