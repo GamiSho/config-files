@@ -1,4 +1,6 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fenc=utf-8
 set nobackup
 set noswapfile
@@ -9,6 +11,7 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set guifont=ComigCode
 filetype plugin on
 filetype indent on
 let mapleader = ","
@@ -57,11 +60,10 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
 
-""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line
-""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 
 au BufRead,BufNewFile *.scss set filetype=sass
@@ -134,19 +136,8 @@ set hlsearch
 set incsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('md',     'green',   'none', '#33ff54', '#151515')
-call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
-call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
-call NERDTreeHighlightFile('js',     'yellow',  'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('java',   'Magenta', 'none', '#ff00e6', '#151515')
-call NERDTreeHighlightFile('bat',    'Red',     'none', '#f64a32', '#151515')
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+
+call plug#end()

@@ -11,6 +11,7 @@ set nobackup
 set noswapfile
 set autoread
 set hidden
+set guifont=ComingCode
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -81,9 +82,6 @@ map <leader>t<leader> :tabnext
 " => Status line
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\
-               \\ CWD:\ %r%{getcwd()}%h\ \
-               \\ Line:\ %l\ \ Column:\ %c
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
