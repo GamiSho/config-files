@@ -11,7 +11,7 @@ set nobackup
 set noswapfile
 set autoread
 set hidden
-set guifont=ComingCode
+set guifont=CamingoCode
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
