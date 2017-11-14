@@ -199,6 +199,13 @@ filetype plugin indent on
 syntax enable
 
 " NERDTree
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+autocmd bufenter * if (winnr("$") == 1 &&
+            \exists ("b:NERDTreeType") &&
+            \ b:NERDTreeType == "primary") | q | endif
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)  
     exec 'autocmd filetype nerdtree highlight '
         \ . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg  
