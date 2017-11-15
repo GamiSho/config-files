@@ -1,9 +1,12 @@
 syntax on
+set guioptions-=m
+set guioptions-=T
+set guioptons-=r
 set background=light
-set lines=25
-set columns=100
+set lines=20
+set columns=90
 set t_Co=256
+set guifont=CamingoCode:h11
 highlight CursorLine cterm=underline
 highlight LineNr ctermfg=Green
 colorscheme lucius
-set guifont=CamingoCode:h12
