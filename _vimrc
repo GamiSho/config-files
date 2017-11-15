@@ -11,7 +11,6 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set guifont=CamingoCode
 filetype plugin on
 filetype indent on
 let mapleader = ","

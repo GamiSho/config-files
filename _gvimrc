@@ -1,10 +1,5 @@
 syntax on
-set number 
-set title 
-set showmatch 
-set matchtime=1
 set background=light
-set cursorline
 set lines=35
 set columns=100
 set t_Co=256
