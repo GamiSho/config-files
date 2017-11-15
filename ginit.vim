@@ -1,1 +1,1 @@
-set guifont=CamingoCode
+set guifont=CamingoCode:h12
