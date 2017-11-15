@@ -1,0 +1,14 @@
+syntax on
+set number 
+set title 
+set showmatch 
+set matchtime=1
+set background=light
+set cursorline
+set lines=35
+set columns=100
+set t_Co=256
+highlight CursorLine cterm=underline
+highlight LineNr ctermfg=Green
+colorscheme lucius
+set guifont=CamingoCode:h12
