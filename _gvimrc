@@ -1,6 +1,6 @@
 syntax on
 set background=light
-set lines=35
+set lines=20
 set columns=100
 set t_Co=256
 highlight CursorLine cterm=underline
