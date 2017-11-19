@@ -9,4 +9,4 @@ set t_Co=256
 set guifont=CamingoCode:h11
 highlight CursorLine cterm=underline
 highlight LineNr ctermfg=Green
-colorscheme lucius
+colorscheme tender
