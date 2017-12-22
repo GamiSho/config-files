@@ -2,7 +2,8 @@
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding utf-8
-let g:python3_host_prog='C:\python35\python.exe'
+let g:python_host_prog='C:\Python27\python.exe'
+let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
 filetype plugin on
 filetype indent on
 let mapleader = ","
@@ -32,11 +33,11 @@ set title
 set noshowmode
 set matchtime=1
 set pumheight=10
-set background=dark
+set background=light
 set wildmode=list:longest
 set cursorline
 set t_Co=256
-colorscheme tender
+colorscheme PaperColor
 if has("gui_running")
     set lines=35 columns=100
 endif
@@ -144,10 +145,6 @@ inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 
 "vnoremap
-vnoremap <silent> * :<C-u>
-            \call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>
-            \call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap gs :s///g<Left><Left><Left>
 
 
@@ -165,8 +162,8 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:dein_dir = expand('~/.cache/nvim/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+let s:dein_dir = expand('C:\Users\9700114\.cache\nvim\dein')
+let s:dein_repo_dir = s:dein_dir . '\repos\github.com\Shougo\dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
@@ -177,9 +174,10 @@ execute 'set runtimepath^=' . s:dein_repo_dir
 call dein#begin(s:dein_dir)
 
 call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/deoplete.nvim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('itchyny/lightline.vim')
+call dein#add('NLKNguyen/papercolor-theme')
 
 call dein#end()
 
@@ -187,17 +185,19 @@ if dein#check_install()
   call dein#install()
 endif
 
+syntax enable
 
 "if dein#load_state(s:dein_dir)
 "    call dein#begin(s:dein_dir)
-"    let s:toml_dir = expand('~/.config/nvim')
-"    call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
-"    call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
+"    let s:toml_dir = expand('C:\Users\9700114\.config\nvim')
+"    call dein#load_toml(s:toml_dir . '\dein.toml', {'lazy': 0})
+"    call dein#load_toml(s:toml_dir . '\dein_lazy.toml', {'lazy': 1})
 "    call dein#end()
 "    call dein#save_state()
 "endif
 
-syntax enable
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " NERDTree
 let NERDTreeQuitOnOpen = 1
@@ -263,19 +263,9 @@ function! CmdLine(str)
     unmenu Foo
 endfunction
 
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' ")
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
+function! s:download(url) abort
+    let content = ''
+    if executable('curl')
+        let content = system('curl', -sL '.shellescape(a:url)')
     endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
 endfunction
