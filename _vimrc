@@ -1,7 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
 set fenc=utf-8
+set ambiwidth=double
 set nobackup
 set noswapfile
 set noundofile
@@ -38,6 +40,8 @@ set tw=500
 set ai
 set si
 set wrap
+
+highlight CursorLine ctermfg=Black ctermbg=White
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
