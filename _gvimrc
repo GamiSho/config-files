@@ -13,6 +13,7 @@ set guifont=CamingoCode:h11
 highlight CursorLine cterm=underline
 highlight LineNr ctermfg=Green
 colorscheme tender
+
 if has('multi_byte_ime')
     highlight Cursor guifg=NONE guibg=Gray
     highlight CursorIM guifg=NONE guibg=Purple
