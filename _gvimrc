@@ -1,8 +1,11 @@
 syntax on
-set guioptions-=m
-set guioptions-=T
+set iminsert=0 imsearch=0
+"set guioptions-=m
+"set guioptions-=T
 set guioptions-=r
-set background=light
+set guioptions-=l
+"set guioptions-=b
+set background=dark
 set lines=20
 set columns=90
 set t_Co=256
@@ -10,3 +13,8 @@ set guifont=CamingoCode:h11
 highlight CursorLine cterm=underline
 highlight LineNr ctermfg=Green
 colorscheme tender
+
+if has('multi_byte_ime')
+    highlight Cursor guifg=NONE guibg=Gray
+    highlight CursorIM guifg=NONE guibg=Purple
+endif

@@ -4,14 +4,13 @@
 scriptencoding utf-8
 let g:python_host_prog='C:\Python27\python.exe'
 let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
-filetype plugin on
-filetype indent on
 let mapleader = ","
 let g:mapleader = ","
 set nobackup
 set noswapfile
 set autoread
 set hidden
+filetype plugin indent on
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -130,6 +129,7 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+noremap <RightMouse> :call nvim_input('*')
 
 "inoremap
 inoremap { {}<Left>
