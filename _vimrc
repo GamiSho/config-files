@@ -56,21 +56,8 @@ au BufRead,BufNewFile *.scss set filetype=sass
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
-nnoremap + <C-a>
-nnoremap - <C-x>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <F12> :set relativenumber!<CR>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap < <><Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-            \"inoremapinoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
 vnoremap <silent> * :<C-u>
             \call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>
@@ -108,6 +95,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
   call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-surround')
   call dein#add('nathanaelkane/vim-indent-guides')
 
   call dein#end()
