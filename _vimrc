@@ -16,12 +16,13 @@ set tabstop=4
 set shiftwidth=4
 let mapleader = ","
 let g:mapleader = ","
+let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
 
 " Display
 set display=lastline
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-set number
+set number relativenumber
 set title
 set showmatch
 set matchtime=1
@@ -43,27 +44,6 @@ highlight CursorLine ctermfg=Black ctermbg=White
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <space> /
-map <c-space> ?
-map <silent> <leader><cr> :noh<cr>
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-map <leader>ba :bufdo bd<cr>
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
@@ -73,16 +53,13 @@ au BufRead,BufNewFile *.scss set filetype=sass
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key remapping
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-
-"inoremap
+nnoremap <F12> :set relativenumber!<CR>
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap < <><Left>
@@ -94,38 +71,11 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
-
-"vnoremap
 vnoremap <silent> * :<C-u>
             \call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>
             \call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap gs :s///g<Left><Left><Left>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map 0 ^
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" Delete trailing white space on save
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,
-                       \*.json,*.css,*.scss
-                       \ :call CleanExtraSpaces()
-endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,6 +104,11 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler.vim')
   call dein#add('itchyny/lightline.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('nathanaelkane/vim-indent-guides')
 
   call dein#end()
   call dein#save_state()
@@ -168,18 +123,26 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin: vim-indent-guides
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin: Unite
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:unite_source_history_ynak_enable = 1
 let g:unite_source_file_mru_limit = 100
 let g:unite_source_file_mru_filename_format = ''
 nnoremap [unite] <Nop>
-nmap <Space>f [unite]
+nmap <Space>u [unite]
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
+nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 
 
@@ -192,6 +155,12 @@ let g:vimfiler_file_icon = '>'
 let g:vimfiler_marked_file_icon = '*'
 let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin: deoplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
