@@ -1,6 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+let g:mapleader = ","
+let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
 set encoding=utf-8
 set fenc=utf-8
 set ambiwidth=double
@@ -14,11 +17,6 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
-let mapleader = ","
-let g:mapleader = ","
-let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
-
-" Display
 set display=lastline
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -39,7 +37,6 @@ set tw=500
 set ai
 set si
 set wrap
-
 highlight CursorLine ctermfg=Black ctermbg=White
 
 
@@ -51,7 +48,7 @@ au BufRead,BufNewFile *.scss set filetype=sass
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key remapping
+" => Key remappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap j gj
 nnoremap k gk
@@ -90,8 +87,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/dein.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler.vim')
-  call dein#add('itchyny/lightline.vim')
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('itchyny/lightline.vim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
   call dein#add('tpope/vim-fugitive')
