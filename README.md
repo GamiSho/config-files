@@ -5,3 +5,5 @@
 --------------
 #### TODO
 * DO
+
+[vim-win32-installer](https://github.com/vim/vim-win32-installer/releases)
