@@ -1,0 +1,18 @@
+set ignorecase
+set incsearch
+set smartcase
+set hlsearch
+set clipboard+=unnamed
+
+inoremap jj <Esc>
+
+nnoremap x "_x
+nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap <Space>f :action FindInPath<CR>
+nnoremap <Space>e :action SearchEverywhere<CR>
+
+vnoremap == :action ReformatCode<CR>
+vnoremap x "_x
+vnoremap < <gv
+vnoremap > >gv
