@@ -60,6 +60,8 @@ vnoremap <silent> * :<C-u>
 vnoremap <silent> # :<C-u>
             \call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap gs :s///g<Left><Left><Left>
+vnoremap H ^
+vnoremap L $
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

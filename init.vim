@@ -146,6 +146,8 @@ inoremap ' ''<LEFT>
 
 "vnoremap
 vnoremap gs :s///g<Left><Left><Left>
+vnoremap L $
+vnoremap H ^
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
