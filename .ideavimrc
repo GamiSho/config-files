@@ -16,5 +16,3 @@ vnoremap == :action ReformatCode<CR>
 vnoremap x "_x
 vnoremap < <gv
 vnoremap > >gv
-vnoremap H ^
-vnoremap L $

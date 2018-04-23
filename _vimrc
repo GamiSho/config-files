@@ -41,27 +41,36 @@ highlight CursorLine ctermfg=Black ctermbg=White
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2
-au BufRead,BufNewFile *.scss set filetype=sass
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key remappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>src :source C:\Users\9700114\_vimrc<CR>
+map <Leader>vimrc :e C:\Users\9700114\_vimrc<CR>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <F12> :set relativenumber!<CR>
+
 vnoremap <silent> * :<C-u>
             \call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>
             \call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap gs :s///g<Left><Left><Left>
-vnoremap H ^
-vnoremap L $
+
+inoremap <silent> jj <Esc>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap < <><Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+            \"inoremapinoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap ` ``<LEFT>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

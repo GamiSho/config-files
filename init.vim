@@ -10,6 +10,7 @@ set nobackup
 set noswapfile
 set autoread
 set hidden
+"This is not working. set shell='C:\Users\9700114\AppData\Local\nvim\link_bash'
 filetype plugin indent on
 
 
@@ -36,6 +37,7 @@ set background=light
 set wildmode=list:longest
 set cursorline
 set t_Co=256
+set termguicolors
 colorscheme PaperColor
 if has("gui_running")
     set lines=35 columns=100
@@ -59,7 +61,6 @@ set wrap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <space> /
 map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 map <C-j> <C-W>j
@@ -86,6 +87,8 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>src :source C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
+map <Leader>vimrc :e C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
 map 0 ^
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -143,11 +146,10 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
+inoremap ` ``<LEFT>
 
 "vnoremap
 vnoremap gs :s///g<Left><Left><Left>
-vnoremap L $
-vnoremap H ^
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
