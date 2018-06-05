@@ -33,6 +33,7 @@
     "php-cs-fixer.formatHtml": false,
     "emmet.triggerExpansionOnTab": true,
     "blade.format.enable": true,
+    "vim.hlsearch": true,
     "vim.statusBarColorControl": true,
     "vim.statusBarColors": {
         "normal": "#0984e3",
@@ -41,5 +42,21 @@
         "visualline": ["#fdcb6e", "#0984e3"],
         "visualblock": ["#fdcb6e", "#0984e3"],
         "replace": "#d08770"
-    }
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        }
+    ]
 }
