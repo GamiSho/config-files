@@ -43,14 +43,19 @@ highlight CursorLine ctermfg=Black ctermbg=White
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key remappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>src :source C:\Users\9700114\_vimrc<CR>
-map <Leader>vimrc :e C:\Users\9700114\_vimrc<CR>
-
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <F12> :set relativenumber!<CR>
+nnoremap H ^
+nnoremap L $
+nnoremap ^ H
+nnoremap $ L
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 
 vnoremap <silent> * :<C-u>
             \call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -58,7 +63,7 @@ vnoremap <silent> # :<C-u>
             \call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap gs :s///g<Left><Left><Left>
 
-inoremap <silent> jj <Esc>
+inoremap <silent> jk <Esc>
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap < <><Left>
@@ -71,6 +76,14 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap ` ``<LEFT>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Abbreviations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+iabbrev adn and
+iabbrev waht what
+iabbrev tehn then
+iabbrev @@ sho_yasugami@cm.jip.co.jp
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,6 +118,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround')
   call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('jacoborus/tender.vim')
 
   call dein#end()
   call dein#save_state()
