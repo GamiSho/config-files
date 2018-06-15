@@ -1,11 +1,17 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let maplocalleader = "-"
 let mapleader = ","
 let g:mapleader = ","
 let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
 set encoding=utf-8
 set fenc=utf-8
+set tabstop=2
+set shiftwidth=2
+set smartindent
+set expandtab
+set autoindent
 set ambiwidth=double
 set nobackup
 set noswapfile
@@ -13,10 +19,6 @@ set noundofile
 set autoread
 set hidden
 set showcmd
-set autoindent
-set expandtab
-set tabstop=4
-set shiftwidth=4
 set display=lastline
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -24,7 +26,6 @@ set number relativenumber
 set title
 set showmatch
 set matchtime=1
-set smartindent
 set virtualedit=onemore
 set laststatus=2
 set wildmode=list:longest
@@ -43,63 +44,68 @@ highlight CursorLine ctermfg=Black ctermbg=White
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key remappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
-nnoremap gs :<C-u>%s///g<Left><Left><Left>
-nnoremap <F12> :set relativenumber!<CR>
 nnoremap H ^
 nnoremap L $
 nnoremap ^ H
 nnoremap $ L
+nnoremap - <nop>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap gs :<C-u>%s///g<Left><Left><Left>
+nnoremap <F12> :set relativenumber!<CR>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-
-vnoremap <silent> * :<C-u>
-            \call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>
-            \call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap gs :s///g<Left><Left><Left>
+inoremap jk <Esc>
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap il{ :<c-u>normal! F}vi{<cr>
 
-inoremap <silent> jk <Esc>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap < <><Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-            \"inoremapinoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-inoremap ` ``<LEFT>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Abbreviations -------------------- {{{
 iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
 iabbrev @@ sho_yasugami@cm.jip.co.jp
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Search
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vimscript file settings -------------------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+"  }}}
+
+augroup filetype_comment_out
+  autocmd!
+  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+  autocmd FileType php nnoremap <buffer> <localleader>c I//<esc>
+  autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+augroup END
+
+augroup filetype_indent
+  autocmd!
+  autocmd BufNewFile, BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile, BufRead *.php setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+
+
+" Search settings -------------------- {{{
 set ignorecase
 set smartcase
 set wrapscan
 set hlsearch
 set incsearch
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin manager -------------------- {{{
 let s:dein_dir = expand('C:\Users\9700114\.cache\vim\dein')
 let s:dein_repo_dir = s:dein_dir . '\repos\github.com\Shougo\dein.vim'
 
@@ -130,19 +136,17 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: vim-indent-guides
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: vim-indent-guides -------------------- {{{
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: Unite
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: Unite -------------------- {{{
 let g:unite_source_history_ynak_enable = 1
 let g:unite_source_file_mru_limit = 100
 let g:unite_source_file_mru_filename_format = ''
@@ -154,28 +158,24 @@ nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: vimfiler
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: vimfiler -------------------- {{{
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_file_icon = '>'
 let g:vimfiler_marked_file_icon = '*'
 let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: deoplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: deoplete
 let g:deoplete#enable_at_startup = 1
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: lightline
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: lightline -------------------- {{{
 let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -234,3 +234,4 @@ endfunction
 function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+" }}}
