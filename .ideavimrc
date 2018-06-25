@@ -19,3 +19,7 @@ nnoremap <Space>e :action SearchEverywhere<CR>
 vnoremap == :action ReformatCode<CR>
 vnoremap < <gv
 vnoremap > >gv
+vnoremap H ^
+vnoremap L $
+vnoremap ^ H
+vnoremap $ L
