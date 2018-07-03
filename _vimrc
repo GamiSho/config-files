@@ -1,6 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic settings
 let maplocalleader = "-"
 let mapleader = ","
 let g:mapleader = ","
@@ -41,9 +39,7 @@ set wrap
 highlight CursorLine ctermfg=Black ctermbg=White
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key remappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key remappings -------------------- {{{
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
@@ -59,11 +55,16 @@ nnoremap <F12> :set relativenumber!<CR>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 vnoremap gs :s///g<Left><Left><Left>
+vnoremap H ^
+vnoremap L $
+vnoremap ^ H
+vnoremap $ L
 inoremap jk <Esc>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap il{ :<c-u>normal! F}vi{<cr>
+" }}}
 
 
 " Abbreviations -------------------- {{{
@@ -74,12 +75,11 @@ iabbrev @@ sho_yasugami@cm.jip.co.jp
 " }}}
 
 
-" Vimscript file settings -------------------- {{{
+" FileType-specific settings -------------------- {{{
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
-"  }}}
 
 augroup filetype_comment_out
   autocmd!
@@ -93,9 +93,10 @@ augroup filetype_indent
   autocmd BufNewFile, BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd BufNewFile, BufRead *.php setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
+" }}}
 
 
-" Search settings -------------------- {{{
+" Search options -------------------- {{{
 set ignorecase
 set smartcase
 set wrapscan
@@ -105,7 +106,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 " }}}
 
 
-" Plugin manager -------------------- {{{
+" Plugin: dein -------------------- {{{
 let s:dein_dir = expand('C:\Users\9700114\.cache\vim\dein')
 let s:dein_repo_dir = s:dein_dir . '\repos\github.com\Shougo\dein.vim'
 
