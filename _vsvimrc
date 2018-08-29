@@ -1,0 +1,16 @@
+" Key remappings -------------------- {{{
+nnoremap j gj
+nnoremap k gk
+nnoremap Y y$
+nnoremap H ^
+nnoremap L $
+nnoremap ^ H
+nnoremap $ L
+nnoremap - <nop>
+vnoremap H ^
+vnoremap L $
+vnoremap ^ H
+vnoremap $ L
+inoremap jk <Esc>
+" }}}
+
