@@ -1,3 +1,5 @@
+set clipboard=unnamed
+
 " Key remappings -------------------- {{{
 nnoremap j gj
 nnoremap k gk
@@ -14,3 +16,11 @@ vnoremap $ L
 inoremap jk <Esc>
 " }}}
 
+" Search options -------------------- {{{
+set ignorecase
+set smartcase
+set wrapscan
+set hlsearch
+set incsearch
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+" }}}
