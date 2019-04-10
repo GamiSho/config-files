@@ -2,7 +2,7 @@
 let maplocalleader = "-"
 let mapleader = ","
 let g:mapleader = ","
-let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
+let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python37-32\python.exe'
 set encoding=utf-8
 set fenc=utf-8
 set tabstop=2
@@ -92,6 +92,7 @@ augroup filetype_indent
   autocmd!
   autocmd BufNewFile, BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd BufNewFile, BufRead *.php setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile, BufRead *.go setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 " }}}
 

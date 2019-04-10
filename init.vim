@@ -2,15 +2,13 @@
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding utf-8
-let g:python_host_prog='C:\Python27\python.exe'
-let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python36-32\python.exe'
+let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python37-32\python.exe'
 let mapleader = ","
 let g:mapleader = ","
 set nobackup
 set noswapfile
 set autoread
 set hidden
-"This is not working. set shell='C:\Users\9700114\AppData\Local\nvim\link_bash'
 filetype plugin indent on
 
 
@@ -87,8 +85,8 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>src :source C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
-map <Leader>vimrc :e C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
+map <Leader>sv :source C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
+map <Leader>ev :e C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
 map 0 ^
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -190,15 +188,6 @@ if dein#check_install()
 endif
 
 syntax enable
-
-"if dein#load_state(s:dein_dir)
-"    call dein#begin(s:dein_dir)
-"    let s:toml_dir = expand('C:\Users\9700114\.config\nvim')
-"    call dein#load_toml(s:toml_dir . '\dein.toml', {'lazy': 0})
-"    call dein#load_toml(s:toml_dir . '\dein_lazy.toml', {'lazy': 1})
-"    call dein#end()
-"    call dein#save_state()
-"endif
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
