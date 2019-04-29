@@ -1,14 +1,12 @@
 [core]
 	autocrlf = true
-	gitproxy = none for *.wb.local
 	quotepath = false
-    editor = gvim
+    editor = nvim
 [user]
-	email = sho_yasugami@cm.jip.co.jp
+	email = vitamin.sho@gmail.com
 	name = Sho Yasugami
 [gui]
 	encoding = utf-8
-	recentrepo = C:/Users/9700114/health-web/health-web
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -25,5 +23,3 @@
 	ll = !git --no-pager log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat
 	lds = !git --no-pager log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Cblue [%cn] %Creset%s\" --decorate --date=short
     lgline = !git --no-pager log --oneline --stat --branches
-[http]
-	proxy = proxy.wb.local:10080
