@@ -1,214 +1,120 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-scriptencoding utf-8
-let g:python3_host_prog=''
+" Basic settings
+let maplocalleader = "-"
 let mapleader = ","
 let g:mapleader = ","
+let g:python3_host_prog=''
+set encoding=utf-8
+set fenc=utf-8
+set tabstop=2
+set shiftwidth=2
+set smartindent
+set expandtab
+set autoindent
+set ambiwidth=double
 set nobackup
 set noswapfile
+set noundofile
 set autoread
 set hidden
-set fileformat=unix
-filetype plugin indent on
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UI
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set showcmd
 set display=lastline
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-set showmatch
-set mat=2
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-syntax on
-set expandtab
-set number
+set number relativenumber
 set title
-set noshowmode
+set showmatch
 set matchtime=1
-set pumheight=10
-set background=light
+set virtualedit=onemore
+set laststatus=2
 set wildmode=list:longest
+set cursorline
+set display=lastline
+set pumheight=10
 set t_Co=256
-set termguicolors
-colorscheme tender
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab
-set smarttab
-set tabstop=4
-set shiftwidth=4
 set lbr
 set tw=500
 set ai
 set si
 set wrap
+colorscheme tender
+highlight CursorLine ctermfg=Black ctermbg=White
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <c-space> ?
-map <silent> <leader><cr> :noh<cr>
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-map <leader>ba :bufdo bd<cr>
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>sv :source ~/.config/nvim/init.vim<CR>
-map <Leader>ev :e ~/.config/nvim/init.vim<CR>
-map 0 ^
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" Delete trailing white space on save
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.php,*.go,
-                       \*.json,*.css,*.scss,*.sass
-                       \ :call CleanExtraSpaces()
-endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>ss :setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key remapping
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap
+" Key remappings -------------------- {{{
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap H ^
+nnoremap L $
+nnoremap ^ H
+nnoremap $ L
+nnoremap - <nop>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-noremap <RightMouse> :call nvim_input('*')
-
-"inoremap
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap < <><Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-            \"inoremapinoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-inoremap ` ``<LEFT>
-
-"vnoremap
+nnoremap <F12> :set relativenumber!<CR>
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 vnoremap gs :s///g<Left><Left><Left>
+vnoremap H ^
+vnoremap L $
+vnoremap ^ H
+vnoremap $ L
+inoremap jk <Esc>
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap il{ :<c-u>normal! F}vi{<cr>
+" }}}
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Search
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Abbreviations -------------------- {{{
+iabbrev adn and
+iabbrev waht what
+iabbrev tehn then
+iabbrev @@ sho_yasugami@cm.jip.co.jp
+" }}}
+
+
+" FileType-specific settings -------------------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup filetype_comment_out
+  autocmd!
+  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+  autocmd FileType php nnoremap <buffer> <localleader>c I//<esc>
+  autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+augroup END
+
+augroup filetype_indent
+  autocmd!
+  autocmd BufNewFile, BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile, BufRead *.php setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile, BufRead *.go setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+" }}}
+
+
+" Search options -------------------- {{{
 set ignorecase
 set smartcase
 set wrapscan
 set hlsearch
 set incsearch
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+" }}}
 
+noremap <RightMouse> :call nvim_input('*')
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins -------------------- {{{
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'jacoborus/tender.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Helper functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Return true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
-
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-function! s:download(url) abort
-    let content = ''
-    if executable('curl')
-        let content = system('curl', -sL '.shellescape(a:url)')
-    endif
-endfunction
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" }}}
