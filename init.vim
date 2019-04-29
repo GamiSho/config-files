@@ -1,4 +1,4 @@
-﻿""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding utf-8
@@ -9,6 +9,7 @@ set nobackup
 set noswapfile
 set autoread
 set hidden
+set fileformat=unix
 filetype plugin indent on
 
 
@@ -33,7 +34,6 @@ set matchtime=1
 set pumheight=10
 set background=light
 set wildmode=list:longest
-set cursorline
 set t_Co=256
 set termguicolors
 colorscheme tender
@@ -161,11 +161,12 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'jacoborus/tender.vim'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'itchyny/lightline.vim'
+call plug#end()
 
-" lightline
-"let g:lightline = {
-"    \ 'colorscheme': 'wombat'
-"    \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
