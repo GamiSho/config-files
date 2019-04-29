@@ -2,7 +2,7 @@
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding utf-8
-let g:python3_host_prog='C:\Users\9700114\AppData\Local\Programs\Python\Python37-32\python.exe'
+let g:python3_host_prog=''
 let mapleader = ","
 let g:mapleader = ","
 set nobackup
@@ -36,10 +36,7 @@ set wildmode=list:longest
 set cursorline
 set t_Co=256
 set termguicolors
-colorscheme PaperColor
-if has("gui_running")
-    set lines=35 columns=100
-endif
+colorscheme tender
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,8 +82,8 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>sv :source C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
-map <Leader>ev :e C:\Users\9700114\AppData\Local\nvim\init.vim<CR>
+map <Leader>sv :source ~/.config/nvim/init.vim<CR>
+map <Leader>ev :e ~/.config/nvim/init.vim<CR>
 map 0 ^
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -103,8 +100,8 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,
-                       \*.json,*.css,*.scss
+    autocmd BufWritePre *.txt,*.js,*.py,*.php,*.go,
+                       \*.json,*.css,*.scss,*.sass
                        \ :call CleanExtraSpaces()
 endif
 
@@ -164,59 +161,11 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:dein_dir = expand('C:\Users\9700114\.cache\nvim\dein')
-let s:dein_repo_dir = s:dein_dir . '\repos\github.com\Shougo\dein.vim'
-
-if !isdirectory(s:dein_repo_dir)
-  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
-endif
-
-execute 'set runtimepath^=' . s:dein_repo_dir
-
-call dein#begin(s:dein_dir)
-
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('scrooloose/nerdtree')
-call dein#add('itchyny/lightline.vim')
-call dein#add('NLKNguyen/papercolor-theme')
-
-call dein#end()
-
-if dein#check_install()
-  call dein#install()
-endif
-
-syntax enable
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-" NERDTree
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-autocmd bufenter * if (winnr("$") == 1 &&
-            \exists ("b:NERDTreeType") &&
-            \ b:NERDTreeType == "primary") | q | endif
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight '
-        \ . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-    exec 'autocmd filetype nerdtree syn match '
-        \ . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-" Flat UI Colors: #8e44ad #95a5a6 #27ae60 #d35400 #f39c12 #f1c40f #16a085
-" Flat UI Colors: #1abc9c #2ecc71 #3498db #9b59b6 #ecf0f1 #7f8c8d
-call NERDTreeHighlightFile('js', 'Red', 'none', '#e74c3c', 'none')
-call NERDTreeHighlightFile('json', 'cyan', 'none', '#27ae60', 'none')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#2980b9', 'none')
-call NERDTreeHighlightFile('scss', 'Red', 'none', '#ff72b9', 'none')
 
 " lightline
-let g:lightline = {
-    \ 'colorscheme': 'wombat'
-    \ }
+"let g:lightline = {
+"    \ 'colorscheme': 'wombat'
+"    \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
