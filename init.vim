@@ -117,5 +117,17 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+" NERDTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" fzf
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>gf :GFiles<CR>
+nnoremap <Leader>ag :Ag<CR>
+command! FZFMru call fzf#run({
+      \ 'source': v:oldfiles,
+      \ 'sink': 'e',
+      \ 'options': '-m -x +s',
+      \ 'down': '40%'})
+nnoremap <Leader>fzf :FZFMru<CR>
 " }}}
