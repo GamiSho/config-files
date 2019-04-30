@@ -2,7 +2,7 @@
 let maplocalleader = "-"
 let mapleader = ","
 let g:mapleader = ","
-let g:python3_host_prog=''
+let g:python3_host_prog='/usr/bin/python3'
 set encoding=utf-8
 set fenc=utf-8
 set tabstop=2
@@ -27,7 +27,6 @@ set matchtime=1
 set virtualedit=onemore
 set laststatus=2
 set wildmode=list:longest
-set cursorline
 set display=lastline
 set pumheight=10
 set t_Co=256
@@ -114,6 +113,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'jacoborus/tender.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>

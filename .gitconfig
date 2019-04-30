@@ -1,5 +1,5 @@
 [core]
-	autocrlf = true
+	autocrlf = input
 	quotepath = false
     editor = nvim
 [user]

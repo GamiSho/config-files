@@ -21,7 +21,7 @@
      fi
 
      has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
-     has vim && symlink "$dotfiles/init.vim" "$XDG_CONFIG_HOME/init.vim"
+     has nvim && symlink "$dotfiles/init.vim" "$XDG_CONFIG_HOME/init.vim"
  }
 
  setup
