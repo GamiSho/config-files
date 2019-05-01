@@ -1,9 +1,10 @@
-#### Manage .vimrc, init.vim
-#### and
-#### other config files
-#### for uing same setting in every where
---------------
-#### TODO
-* DO
+# Dotfiles and other editor settings.
 
-[vim-win32-installer](https://github.com/vim/vim-win32-installer/releases)
+## How to install
+Run the following command.
+```
+$ curl -sL gamisho.com | sh
+```
+
+## TODO
+* Deploy VSCode setting.
