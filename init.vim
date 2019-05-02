@@ -60,6 +60,8 @@ vnoremap L $
 vnoremap ^ H
 vnoremap $ L
 inoremap jk <Esc>
+inoremap " ""<Left>
+inoremap ' ''<Left>
 
 " Pair Brackets
 function! ConditionalPairMap(open, close)
@@ -74,7 +76,6 @@ endfunction
 inoremap <expr> ( ConditionalPairMap('(', ')')
 inoremap <expr> { ConditionalPairMap('{', '}')
 inoremap <expr> [ ConditionalPairMap('[', ']')
-" }}}
 
 
 " Abbreviations -------------------- {{{
