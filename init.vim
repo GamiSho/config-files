@@ -48,7 +48,7 @@ nnoremap L $
 nnoremap ^ H
 nnoremap $ L
 nnoremap - <nop>
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <F12> :set relativenumber!<CR>
@@ -60,10 +60,20 @@ vnoremap L $
 vnoremap ^ H
 vnoremap $ L
 inoremap jk <Esc>
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap il( :<c-u>normal! F)vi(<cr>
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap il{ :<c-u>normal! F}vi{<cr>
+
+" Pair Brackets
+function! ConditionalPairMap(open, close)
+  let line = getline('.')
+  let col = col('.')
+  if col < col('$') || stridx(line, a:close, col + 1 ) != -1
+    return a:open
+  else
+    return a:open . a:close . repeat("\<left>", len(a:close))
+  endif
+endfunction
+inoremap <expr> ( ConditionalPairMap('(', ')')
+inoremap <expr> { ConditionalPairMap('{', '}')
+inoremap <expr> [ ConditionalPairMap('[', ']')
 " }}}
 
 
