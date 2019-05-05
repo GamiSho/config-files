@@ -40,6 +40,7 @@ highlight CursorLine ctermfg=Black ctermbg=White
 
 
 " Key remappings -------------------- {{{
+noremap <RightMouse> :call nvim_input('*')
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
@@ -62,6 +63,7 @@ vnoremap $ L
 inoremap jk <Esc>
 inoremap " ""<Left>
 inoremap ' ''<Left>
+tnoremap <C-j> <C-\><C-n>
 
 " Pair Brackets
 function! ConditionalPairMap(open, close)
@@ -76,6 +78,7 @@ endfunction
 inoremap <expr> ( ConditionalPairMap('(', ')')
 inoremap <expr> { ConditionalPairMap('{', '}')
 inoremap <expr> [ ConditionalPairMap('[', ']')
+" }}}
 
 
 " Abbreviations -------------------- {{{
@@ -117,7 +120,6 @@ set incsearch
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 " }}}
 
-noremap <RightMouse> :call nvim_input('*')
 
 " Plugins -------------------- {{{
 call plug#begin('~/.local/share/nvim/plugged')
