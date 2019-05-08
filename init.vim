@@ -85,6 +85,7 @@ inoremap <expr> [ ConditionalPairMap('[', ']')
 iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
+iabbrev teh the
 iabbrev @@ sho_yasugami@cm.jip.co.jp
 " }}}
 
