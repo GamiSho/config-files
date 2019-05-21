@@ -8,3 +8,4 @@ $ curl -sL gamisho.com | sh
 
 ## TODO
 * Deploy VSCode setting.
+* Add ideavimrc.
