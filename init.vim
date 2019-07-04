@@ -50,6 +50,7 @@ nnoremap L $
 nnoremap ^ H
 nnoremap $ L
 nnoremap - <nop>
+nnoremap <Leader>w :w<CR>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
