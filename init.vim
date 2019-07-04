@@ -1,7 +1,7 @@
 " Basic settings
 let maplocalleader = "-"
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 let g:python3_host_prog='/usr/bin/python3'
 set encoding=utf-8
 set fenc=utf-8
@@ -37,7 +37,8 @@ set si
 set wrap
 colorscheme tender
 highlight CursorLine ctermfg=Black ctermbg=White
-
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " Key remappings -------------------- {{{
 noremap <RightMouse> :call nvim_input('*')
@@ -51,10 +52,11 @@ nnoremap $ L
 nnoremap - <nop>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap gs :<C-u>%s///g<Left><Left><Left>
-nnoremap <F12> :set relativenumber!<CR>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprev<CR>
+nnoremap <F12> :set relativenumber!<CR>
 vnoremap gs :s///g<Left><Left><Left>
 vnoremap H ^
 vnoremap L $
@@ -101,6 +103,7 @@ augroup filetype_comment_out
   autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
   autocmd FileType php nnoremap <buffer> <localleader>c I//<esc>
   autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+  autocmd FileType ruby nnoremap <buffer> <localleader>c I#<esc>
 augroup END
 
 augroup filetype_indent
