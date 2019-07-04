@@ -12,3 +12,4 @@ fbr() {
   git checkout $(echo "${branch}" | awk '{print $1}' | sed "s/.* //")
 }
 
+source /Users/sho/alacritty/extra/completions/alacritty.bash
