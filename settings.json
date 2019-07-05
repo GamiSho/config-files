@@ -3,8 +3,6 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Relaxed",
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-    "editor.fontFamily": "CamingoCode",
     "editor.minimap.side": "left",
     "emmet.triggerExpansionOnTab": true,
     "vim.hlsearch": true,
