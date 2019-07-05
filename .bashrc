@@ -3,8 +3,8 @@ alias vim='nvim'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# fbr - checkout git branch
-fbr() {
+# fcheckout - checkout git branch
+fcheckout() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "${branches}" | fzf +m) &&
