@@ -36,7 +36,6 @@ set tw=500
 set ai
 set si
 set wrap
-set tabline=%!MyTabLine()
 colorscheme tender
 highlight CursorLine ctermfg=Black ctermbg=White
 filetype plugin on
@@ -138,7 +137,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " NERDTree
-nnoremap <Leader>e :NERDTreeToggle<CR>
+nnoremap <C-d> :NERDTreeToggle<CR>
 
 " fzf
 nnoremap <Leader>b :Buffers<CR>
@@ -152,6 +151,7 @@ command! FZFMru call fzf#run({
 nnoremap <Leader>fzf :FZFMru<CR>
 " }}}
 
+" Functions -------------------- {{{
 " vp doesn't replace paste buffer
 function! RestoreRegister()
   let @" = s:restore_reg
@@ -164,36 +164,90 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 
 " tabline customize
-function! MyTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1])
-endfunction
+if exists("+showtabline")
 
 function! MyTabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    " select the highlighting
-    if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
-    endif
+    let s = ''
+    let t = tabpagenr()
+    let i = 1
+    while i <= tabpagenr('$')
+        let buflist = tabpagebuflist(i)
+        let winnr = tabpagewinnr(i)
+        let s .= '%' . i . 'T'
+        let s .= (i == t ? '%1*' : '%2*')
 
-    " set the tab page number (for mouse clicks)
-    let s .= '%' . (i + 1) . 'T'
+        " let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+        " let s .= ' '
+        let s .= (i == t ? '%#TabNumSel#' : '%#TabNum#')
+        let s .= ' ' . i . ' '
+        let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
 
-    " the label is made by MyTabLabel()
-    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-  endfor
+        let bufnr = buflist[winnr - 1]
+        let file = bufname(bufnr)
+        let buftype = getbufvar(bufnr, '&buftype')
 
-  " after the last tab fill with TabLineFill and reset tab page nr
-  let s .= '%#TabLineFill#%T'
+        if buftype == 'help'
+            let file = 'help:' . fnamemodify(file, ':t:r')
 
-  " right-align the label to close the current tab page
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999Xclose'
-  endif
+        elseif buftype == 'quickfix'
+            let file = 'quickfix'
 
-  return s
+        elseif buftype == 'nofile'
+            if file =~ '\/.'
+                let file = substitute(file, '.*\/\ze.', '', '')
+            endif
+
+        else
+            let file = pathshorten(fnamemodify(file, ':p:~:.'))
+            if getbufvar(bufnr, '&modified')
+                let file = '+' . file
+            endif
+
+        endif
+
+        if file == ''
+            let file = '[No Name]'
+        endif
+
+        let s .= ' ' . file
+
+        let nwins = tabpagewinnr(i, '$')
+        if nwins > 1
+            let modified = ''
+            for b in buflist
+                if getbufvar(b, '&modified') && b != bufnr
+                    let modified = '*'
+                    break
+                endif
+            endfor
+            let hl = (i == t ? '%#WinNumSel#' : '%#WinNum#')
+            let nohl = (i == t ? '%#TabLineSel#' : '%#TabLine#')
+            let s .= ' ' . modified . '(' . hl . winnr . nohl . '/' . nwins . ')'
+        endif
+
+        if i < tabpagenr('$')
+            let s .= ' %#TabLine#|'
+        else
+            let s .= ' '
+        endif
+
+        let i = i + 1
+
+    endwhile
+
+    let s .= '%T%#TabLineFill#%='
+    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+    return s
+
 endfunction
+
+" set showtabline=1
+highlight! TabNum term=bold,underline cterm=bold,underline ctermfg=1 ctermbg=7 gui=bold,underline guibg=LightGrey
+highlight! TabNumSel term=bold,reverse cterm=bold,reverse ctermfg=1 ctermbg=7 gui=bold
+highlight! WinNum term=bold,underline cterm=bold,underline ctermfg=11 ctermbg=7 guifg=DarkBlue guibg=LightGrey
+highlight! WinNumSel term=bold cterm=bold ctermfg=7 ctermbg=14 guifg=DarkBlue guibg=LightGrey
+
+set tabline=%!MyTabLine()
+
+endif " exists("+showtabline")
+" }}}
