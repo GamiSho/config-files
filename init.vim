@@ -38,6 +38,11 @@ set si
 set wrap
 colorscheme tender
 highlight CursorLine ctermfg=Black ctermbg=White
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
@@ -150,6 +155,7 @@ command! FZFMru call fzf#run({
       \ 'up': '40%'})
 nnoremap <Leader>fzf :FZFMru<CR>
 " }}}
+
 
 " Functions -------------------- {{{
 " vp doesn't replace paste buffer
