@@ -17,6 +17,7 @@ link_dot_files() {
     if [ ! -e ${HOME}/${f} ]; then
       [[ ${f} = ".git" ]] && continue
       [[ ${f} = ".gitignore" ]] && continue
+      [[ ${f} = ".DS_Store" ]] && continue
       ln -snfv ${DOT_DIR}/${f} ${HOME}/${f}
     fi
   done

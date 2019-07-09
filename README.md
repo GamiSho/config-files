@@ -3,7 +3,7 @@
 ## How to install
 Run the following command.
 ```
-$ curl -sL gamisho.com | sh
+$ curl -sL gamisho.com | bash
 // これやといごかんくなったので修正しないかん
 ```
 
