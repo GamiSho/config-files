@@ -4,7 +4,7 @@ alias vim='nvim'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # fcheckout - checkout git branch
-fcheckout() {
+fch() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "${branches}" | fzf +m) &&
@@ -29,6 +29,13 @@ fchromeh() {
     "select substr(title, 1, $cols), url from urls order by last_visit_time desc" |
   awk -F $sep '{printf "%-'$cols's \x1b[36m%s\x1b[m\n", $1, $2}' |
   fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+}
+
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/¥.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
 }
 
 source $HOME/.git-prompt.sh
