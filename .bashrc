@@ -1,5 +1,6 @@
 alias vi='nvim'
 alias vim='nvim'
+alias fvim='nvim $(fzf --exact)'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

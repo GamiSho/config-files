@@ -9,6 +9,7 @@ set tabstop=2
 set shiftwidth=2
 set smartindent
 set expandtab
+set showtabline=2
 set autoindent
 set ambiwidth=double
 set nobackup
@@ -35,6 +36,7 @@ set tw=500
 set ai
 set si
 set wrap
+set tabline=%!MyTabLine()
 colorscheme tender
 highlight CursorLine ctermfg=Black ctermbg=White
 filetype plugin on
@@ -136,7 +138,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " NERDTree
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <Leader>e :NERDTreeToggle<CR>
 
 " fzf
 nnoremap <Leader>b :Buffers<CR>
@@ -160,3 +162,38 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" tabline customize
+function! MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+
+function! MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999Xclose'
+  endif
+
+  return s
+endfunction
