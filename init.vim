@@ -28,6 +28,8 @@ set matchtime=1
 set virtualedit=onemore
 set laststatus=2
 set wildmode=list:longest
+set wildmenu
+set history=100
 set display=lastline
 set pumheight=10
 set t_Co=256
@@ -36,15 +38,11 @@ set tw=500
 set ai
 set si
 set wrap
+set omnifunc=syntaxcomplete#Complete
 colorscheme tender
 highlight CursorLine ctermfg=Black ctermbg=White
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight LineNr ctermbg=none
-highlight Folded ctermbg=none
-highlight EndOfBuffer ctermbg=none 
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+source $VIMRUNTIME/macros/matchit.vim
 
 " Key remappings -------------------- {{{
 noremap <RightMouse> :call nvim_input('*')
@@ -128,7 +126,7 @@ set smartcase
 set wrapscan
 set hlsearch
 set incsearch
-nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 " }}}
 
 
@@ -182,8 +180,6 @@ function! MyTabLine()
         let s .= '%' . i . 'T'
         let s .= (i == t ? '%1*' : '%2*')
 
-        " let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-        " let s .= ' '
         let s .= (i == t ? '%#TabNumSel#' : '%#TabNum#')
         let s .= ' ' . i . ' '
         let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
@@ -248,10 +244,8 @@ function! MyTabLine()
 endfunction
 
 " set showtabline=1
-highlight! TabNum term=bold,underline cterm=bold,underline ctermfg=1 ctermbg=7 gui=bold,underline guibg=LightGrey
-highlight! TabNumSel term=bold,reverse cterm=bold,reverse ctermfg=1 ctermbg=7 gui=bold
-highlight! WinNum term=bold,underline cterm=bold,underline ctermfg=11 ctermbg=7 guifg=DarkBlue guibg=LightGrey
-highlight! WinNumSel term=bold cterm=bold ctermfg=7 ctermbg=14 guifg=DarkBlue guibg=LightGrey
+highlight! TabNumSel term=bold,reverse cterm=bold,reverse ctermfg=17 ctermbg=10 gui=bold
+highlight! WinNumSel term=bold cterm=bold ctermfg=2
 
 set tabline=%!MyTabLine()
 
