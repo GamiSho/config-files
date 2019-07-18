@@ -9,4 +9,3 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 eval "$(rbenv init -)"
 
-source $HOME/.bashrc
