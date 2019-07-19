@@ -39,6 +39,7 @@ set ai
 set si
 set wrap
 set omnifunc=syntaxcomplete#Complete
+set clipboard+=unnamed
 colorscheme tender
 highlight CursorLine ctermfg=Black ctermbg=White
 filetype plugin on
