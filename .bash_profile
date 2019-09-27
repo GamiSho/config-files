@@ -9,4 +9,6 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 eval "$(rbenv init -)"
 
+source $XDG_CONFIG_HOME/nvm/nvm.sh
 source $HOME/.bashrc
+nvm use v10.16.3
