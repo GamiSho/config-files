@@ -101,15 +101,15 @@ tabspaces: 8
 # Font configuration (changes require restart)
 font:
   normal:
-    family: SF Mono
+    family: Roboto Mono for Powerline
     style: Regular
 
   bold:
-    family: SF Mono
+    family: Roboto Mono for Powerline
     style: Bold
 
   italic:
-    family: SF Mono
+    family: Roboto Mono for Powerline
     style: Italic
 
   # Point size
