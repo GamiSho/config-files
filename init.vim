@@ -184,6 +184,13 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+" Hide tmux status line while vim  is running."
+if !has('gui_running') && $TMUX !=# ''
+  augroup Tmux
+    autocmd!
+    autocmd VimEnter,VimLeave * silent !tmux set status
+  augroup END
+endif
 
 " set showtabline=1
 highlight! TabNumSel term=bold,reverse cterm=bold,reverse ctermfg=17 ctermbg=10 gui=bold
