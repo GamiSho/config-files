@@ -1,3 +1,5 @@
+if !exists('g:vscode') 
+
 " Basic settings
 let maplocalleader = "-"
 let mapleader = "\<Space>"
@@ -73,10 +75,6 @@ nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprev<CR>
 nnoremap <F12> :set relativenumber!<CR>
 vnoremap gs :s///g<Left><Left><Left>
-vnoremap H ^
-vnoremap L $
-vnoremap ^ H
-vnoremap $ L
 inoremap jk <Esc>
 inoremap " ""<Left>
 inoremap ' ''<Left>
@@ -195,3 +193,8 @@ endif
 highlight! TabNumSel term=bold,reverse cterm=bold,reverse ctermfg=17 ctermbg=10 gui=bold
 highlight! WinNumSel term=bold cterm=bold ctermfg=2
 " }}}
+"
+
+else
+  " ##### This is VS Code nvim setting #####"
+endif

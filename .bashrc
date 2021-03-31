@@ -1,10 +1,19 @@
 alias vi='nvim'
 alias vim='nvim'
 alias fvim='nvim $(fzf --exact)'
-alias ll='ls -l'
 alias sed='gsed'
+if [[ $(command -v exa) ]]; then
+  alias e='exa --icons'
+  alias l=e
+  alias ls=e
+  alias ea='exa -a --icons'
+  alias la=ea
+  alias ee='exa -aal --icons'
+  alias ll=ee
+  alias lta=eta
+fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fcheckout - checkout git branch
 fch() {
@@ -33,9 +42,5 @@ fssh() {
 
 source $HOME/.git-prompt.sh
 source $HOME/alacritty/extra/completions/alacritty.bash
-
-export NVM_DIR="$HOME/.config"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
