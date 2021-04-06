@@ -78,19 +78,19 @@ scrolling:
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Roboto Mono for Powerline
+    family: Hack Nerd Font Mono
     style: Regular
 
   bold:
-    family: Roboto Mono for Powerline
+    family: Hack Nerd Font Mono
     style: Bold
 
   italic:
-    family: Roboto Mono for Powerline
+    family: Hack Nerd Font Mono
     style: Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
