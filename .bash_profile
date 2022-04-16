@@ -6,8 +6,5 @@ export XDG_DATA_HOME=~/.local/share
 export LANG=ja_JP.UTF-8
 export LC_ALL=en_US.UTF-8
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-export PATH="$PATH:/path/to/elixir/bin"
-
-eval "$(rbenv init -)"
 
 source $HOME/.bashrc
