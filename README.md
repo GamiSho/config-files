@@ -4,7 +4,7 @@
 Run the following command.
 ```
 $ curl -sL gamisho.com | bash
-// これやといごかんくなったので修正しないかん
+// deprecated
 ```
 
 ## TODO
