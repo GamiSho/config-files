@@ -92,7 +92,6 @@
     #instance: Alacritty
     # General application class
     #general: Alacritty
-
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark`
@@ -336,27 +335,6 @@ colors:
 
 # Bell
 #
-# The bell is rung every time the BEL control character is received.
-#bell:
-  # Visual Bell Animation
-  #
-  # Animation effect for flashing the screen when the visual bell is rung.
-  #
-  # Values for `animation`:
-  #   - Ease
-  #   - EaseOut
-  #   - EaseOutSine
-  #   - EaseOutQuad
-  #   - EaseOutCubic
-  #   - EaseOutQuart
-  #   - EaseOutQuint
-  #   - EaseOutExpo
-  #   - EaseOutCirc
-  #   - Linear
-  #animation: EaseOutExpo
-
-# Background opacity
-#
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window.opacity: 0.5
@@ -434,9 +412,6 @@ window.opacity: 0.5
 
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
-
-# Offer IPC using `alacritty msg` (unix only)
-#ipc_socket: true
 
 #mouse:
   # Click settings

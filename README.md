@@ -3,4 +3,3 @@
 - vscode
 - alacritty
 - tmux
-
