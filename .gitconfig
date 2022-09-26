@@ -1,28 +1,38 @@
 [core]
-	autocrlf = input
-	quotepath = false
+  autocrlf = input
+  quotepath = false
   editor = nvim
-  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+  pager = delta
 [user]
-	email = vitamin.sho@gmail.com
-	name = Sho Yasugami
+  email = vitamin.sho@gmail.com
+  name = Sho Yasugami
 [gui]
-	encoding = utf-8
+  encoding = utf-8
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [color]
-	ui = true
-	diff = auto
-	status = auto
-	branch = auto
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
 [interactive]
   diffFilter = delta --color-only
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [alias]
   pom = push origin master
   lg = !git --no-pager log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate
-	ll = !git --no-pager log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat
-	lds = !git --no-pager log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Cblue [%cn] %Creset%s\" --decorate --date=short
+  ll = !git --no-pager log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat
+  lds = !git --no-pager log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Cblue [%cn] %Creset%s\" --decorate --date=short
   lgline = !git --no-pager log --oneline --stat --branches
+[delta]
+  navigate = true
+  light = false
+
+[init]
+  defaultBranch = main
