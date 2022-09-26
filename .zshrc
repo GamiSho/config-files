@@ -9,8 +9,6 @@ path=(
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /Library/Apple/usr/bin
-  /Applications/MAMP/bin/php/php5.6.40/bin
-  /usr/local/go/bin
 )
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit
