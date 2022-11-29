@@ -4,3 +4,4 @@
 - alacritty
 - tmux
 - zsh
+- emacs
