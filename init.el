@@ -35,3 +35,6 @@
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(put 'upcase-region 'disabled nil)
+
+(add-to-list 'default-frame-alist '(cursor-type . bar))
