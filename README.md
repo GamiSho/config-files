@@ -5,3 +5,4 @@
 - tmux
 - zsh
 - emacs
+  - nano-emacsがないとうごかないです!!
