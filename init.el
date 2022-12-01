@@ -1,73 +1,3 @@
-(setq mac-option-modifier 'meta)
-
-(defun shasugami/add-to-load-path (&rest paths)
-  (let (path)
-    (dolist (path paths paths)
-      (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
-        (unless (file-exists-p default-directory)
-          (make-directory default-directory))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-            (normal-top-level-add-subdirs-to-load-path))))))
-
-(shasugami/add-to-load-path "elisp" "conf")
-
-(setq custom-file (locate-user-emacs-file "custom.el"))
-(unless (file-exists-p custom-file)
-  (write-region "" nil custom-file))
-(load custom-file)
-
-(prog1 "prepare leaf"
-  (prog1 "package"
-    (custom-set-variables
-     '(package-archives '(("org"   . "https://orgmode.org/elpa/")
-                          ("melpa" . "https://melpa.org/packages/")
-                          ("gnu"   . "https://elpa.gnu.org/packages/"))))
-    (package-initialize))
-
-  (prog1 "leaf"
-    (unless (package-installed-p 'leaf)
-      (unless (assoc 'leaf package-archive-contents)
-        (package-refresh-contents))
-      (condition-case err
-          (package-install 'leaf)
-        (error
-         (package-refresh-contents)       ; renew local melpa cache if fail
-         (package-install 'leaf))))
-
-    (leaf leaf-keywords
-      :ensure t
-      :config (leaf-keywords-init)))
-
-  (prog1 "optional packages for leaf-keywords"
-    ;; optional packages if you want to use :hydra, :el-get,,,
-    (leaf hydra :ensure t)
-    (leaf el-get :ensure t
-      :custom ((el-get-git-shallow-clone  . t)))))
-
-(define-key global-map (kbd "C-t") 'other-window)
-(define-key global-map (kbd "C-c k") 'kill-buffer-and-window)
-
-(leaf smart-mode-line
-  :ensure t
-  :custom ((sml/no-confirm-load-theme . t)
-           (sml/theme . 'dark)
-           (sml/shorten-directory . -1))
-  :config
-  (sml/setup))
-
-(column-number-mode t)
-(global-linum-mode t)
-(setq inhibit-startup-message t)
-(setq-default indent-tabs-mode nil)
-(electric-pair-mode 1)
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-(put 'upcase-region 'disabled nil)
-(add-to-list 'default-frame-alist '(cursor-type . bar))
-(define-key key-translation-map [?\C-h] [?\C-?])
-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / N Λ N O - Emacs made simple
 ;; Copyright (C) 2020 - N Λ N O developers
@@ -85,6 +15,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program. If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
+(package-initialize)
+
 
 ;; Path to nano emacs modules (mandatory)
 (add-to-list 'load-path "/Users/genronnewimac/.emacs.d/nano")
@@ -100,7 +32,6 @@
 (add-to-list 'command-switch-alist '("-no-splash" . (lambda (args))))
 (add-to-list 'command-switch-alist '("-no-help" . (lambda (args))))
 (add-to-list 'command-switch-alist '("-compact" . (lambda (args))))
-
 
 (cond
  ((member "-default" command-line-args) t)
@@ -121,6 +52,9 @@
     (load custom-file)))
 
 ;; Theme
+(require 'nano-theme-dark)
+(setq nano-theme-var "dark")
+
 (require 'nano-faces)
 (nano-faces)
 
@@ -142,5 +76,32 @@
 ;; Compact layout (need to be loaded after nano-modeline)
 (when (member "-compact" command-line-args)
   (require 'nano-compact))
+  
+;; Nano counsel configuration (optional)
+;; Needs "counsel" package to be installed (M-x: package-install)
+;; (require 'nano-counsel)
 
-(provide 'nano)
+;; Welcome message (optional)
+(let ((inhibit-message t))
+  (message "Welcome to GNU Emacs / N Λ N O edition")
+  (message (format "Initialization time: %s" (emacs-init-time))))
+
+;; Splash (optional)
+(unless (member "-no-splash" command-line-args)
+  (require 'nano-splash))
+
+;; Help (optional)
+(unless (member "-no-help" command-line-args)
+  (require 'nano-help))
+
+(add-to-list 'default-frame-alist '(cursor-type . bar))
+(define-key key-translation-map [?\C-h] [?\C-?])
+(setq mac-option-modifier 'meta)
+(define-key global-map (kbd "C-t") 'other-window)
+(define-key global-map (kbd "C-c k") 'kill-buffer-and-window)
+(column-number-mode t)
+(global-linum-mode t)
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(electric-pair-mode 1)
+(setq-default indent-tabs-mode nil)
