@@ -2,6 +2,7 @@ typeset -U path PATH
 path=(
   /opt/homebrew/bin(N-/)
   /opt/homebrew/sbin(N-/)
+  /opt/local/bin
   /usr/bin
   /usr/sbin
   /bin
@@ -9,6 +10,7 @@ path=(
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /Library/Apple/usr/bin
+  /Applications/MAMP/bin/php/php5.6.40/bin
 )
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit
@@ -58,9 +60,9 @@ fvi() {
 }
 fdb() {
   local branches branch
-  branches=$(git branch --merged) &&
+  branches=$(git branch) &&
   branch=$(echo "$branches" | fzf +m) &&
-    git branch -d $(echo "$branch" | sed "s/.* //") && fdb
+    git branch -D $(echo "$branch" | sed "s/.* //")
 }
 function fhis() {
   BUFFER=$(history -n -r 1 | fzf -e --no-sort +m --query "$LBUFFER" --prompt="History > ")
@@ -74,3 +76,4 @@ bindkey '^r' fhis
 
 eval "$(anyenv init -)"
 eval "$(starship init zsh)"
+eval "$(gh completion -s zsh)"
