@@ -10,6 +10,7 @@ path=(
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /Library/Apple/usr/bin
+  /Users/genronnewimac/.cargo/bin
   /Applications/MAMP/bin/php/php5.6.40/bin
 )
 fpath=(~/.zsh $fpath)
@@ -26,6 +27,7 @@ fi
 alias vim=nvim
 alias vi=nvim
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias sqlite=/opt/homebrew/Cellar/sqlite/3.40.1/bin/sqlite3
 
 
 # exa
