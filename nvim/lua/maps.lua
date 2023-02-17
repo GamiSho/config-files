@@ -16,5 +16,13 @@ map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', op
 
 map('n', 'j', 'gj', optioins)
 map('n', 'k', 'gk', optioins)
+map('n', 'L', '$', optioins)
+map('n', 'H', '^', optioins)
 map('i', 'jk', '<esc>', { noremap = true, silent = true })
-
+map('i', '"', '""<ESC>i', options)
+map('i', '\'', '\'\'<ESC>i', options)
+map('i', '(', '()<ESC>i', options)
+map('i', '[', '[]', options)
+map('i', '{', '{}', options)
+map('i', '{<CR>', '{<CR>}<ESC>O', options)
+map('t', '<ESC>', '<C-\\><C-n>', options)
