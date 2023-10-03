@@ -13,6 +13,8 @@ path=(
   /Users/genronnewimac/.cargo/bin
   /Applications/MAMP/bin/php/php5.6.40/bin
 )
+# echo 'export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"' >> ~/.zshrc
+# echo 'export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"' >> ~/.zshrc
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit
 compinit -u
@@ -43,6 +45,12 @@ if [[ $(command -v exa) ]]; then
   alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
 fi
 
+function fsh() {
+  local host=$(grep -E "^Host " ~/.ssh/config | sed -e 's/Host[ ]*//g' | fzf)
+  if [ -n "$host" ]; then
+    ssh $host
+  fi
+}
 # fch - checkout git branch
 fch() {
   local branches branch
@@ -78,4 +86,11 @@ bindkey '^r' fhis
 
 eval "$(anyenv init -)"
 eval "$(starship init zsh)"
-eval "$(gh completion -s zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/genronnewimac/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
