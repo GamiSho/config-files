@@ -26,3 +26,9 @@ opt.showtabline = 2
 opt.rtp:append('/opt/homebrew/opt/fzf')
 
 vim.cmd('colorscheme tender')
+vim.cmd('language en_US')
+
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.python3_host_prog = '/Users/genronnewimac/.anyenv/envs/pyenv/shims/python'
