@@ -166,33 +166,55 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night)
+# Colors (Flexoki)
 colors:
+  # Default colors
   primary:
-    background: '0x2E3440'
-    foreground: '0xD8DEE9'
-  cursor:
-    text: '0x2E3440'
-    cursor: '0xD8DEE9'
-  normal:
-    black: '0x3B4252'
-    red: '0xBF616A'
-    green: '0xA3BE8C'
-    yellow: '0xEBCB8B'
-    blue: '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan: '0x88C0D0'
-    white: '0xE5E9F0'
-  bright:
-    black: '0x4C566A'
-    red: '0xBF616A'
-    green: '0xA3BE8C'
-    yellow: '0xEBCB8B'
-    blue: '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan: '0x8FBCBB'
-    white: '0xECEFF4'
+    background: "0x282726"
+    foreground: "0xFFFCF0"
 
+    dim_foreground: "0xFFFCF0"
+    bright_foreground: "0xFFFCF0"
+    dim_background: "0x1C1B1A"
+    bright_background: "0x1C1B1A"
+
+  # Cursor colors
+  cursor:
+    text: "0xFFFCF0"
+    cursor: "0xFFFCF0"
+
+  # Normal colors
+  normal:
+    black: "0x100F0F"
+    red: "0xAF3029"
+    green: "0x66800B"
+    yellow: "0xAD8301"
+    blue: "0x205EA6"
+    magenta: "0xA02F6F"
+    cyan: "0x24837B"
+    white: "0xFFFCF0"
+
+  # Bright colors
+  bright:
+    black: "0x100F0F"
+    red: "0xD14D41"
+    green: "0x879A39"
+    yellow: "0xD0A215"
+    blue: "0x4385BE"
+    magenta: "0xCE5D97"
+    cyan: "0x3AA99F"
+    white: "0xFFFCF0"
+
+  # Dim colors
+  dim:
+    black: "0x100F0F"
+    red: "0xAF3029"
+    green: "0x66800B"
+    yellow: "0xAD8301"
+    blue: "0x205EA6"
+    magenta: "0xA02F6F"
+    cyan: "0x24837B"
+    white: "0xFFFCF0"
   # Default colors
   #primary:
   #  background: '#1d1f21'
