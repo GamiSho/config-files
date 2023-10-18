@@ -25,7 +25,8 @@ opt.updatetime = 300
 opt.showtabline = 2
 opt.rtp:append('/opt/homebrew/opt/fzf')
 
-vim.cmd('colorscheme tender')
+--vim.cmd('colorscheme tender')
+vim.cmd('colorscheme kanagawa')
 vim.cmd('language en_US')
 
 vim.g.loaded_ruby_provider = 0

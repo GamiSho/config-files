@@ -15,7 +15,7 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require('telescope').setup{
+require('telescope').setup {
   pickers = {
     find_files = {
       theme = "dropdown",
