@@ -56,7 +56,7 @@ fch() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+  git switch $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 # fcd - cd to selected directory
 fcd() {
