@@ -1,3 +1,6 @@
+[window]
+padding = {x=3,y=3}
+
 [colors.bright]
 black = "0x100F0F"
 blue = "0x4385BE"
@@ -276,8 +279,8 @@ key = "Down"
 mode = "AppCursor"
 
 [[keyboard.bindings]]
-chars = "\u001BOP"
 key = "F1"
+action = "ToggleViMode"
 
 [[keyboard.bindings]]
 chars = "\u001BOQ"
