@@ -1,5 +1,5 @@
 [window]
-padding = {x=3,y=3}
+padding = {x=1,y=6}
 
 [colors.bright]
 black = "0x100F0F"
