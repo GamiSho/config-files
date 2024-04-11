@@ -1,5 +1,7 @@
 [window]
 padding = {x=3,y=3}
+decorations = "Transparent"
+opacity = 0.9
 
 [colors.bright]
 black = "0x100F0F"
@@ -55,6 +57,10 @@ style = "Italic"
 [font.normal]
 family = "Hack Nerd Font Mono"
 style = "Regular"
+
+[cursor]
+style = {shape="Beam", blinking="On"}
+vi_mode_style = {shape="Block", blinking="Off"}
 
 [[keyboard.bindings]]
 action = "Paste"
