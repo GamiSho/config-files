@@ -61,6 +61,7 @@ style = "Regular"
 [cursor]
 style = {shape="Beam", blinking="On"}
 vi_mode_style = {shape="Block", blinking="Off"}
+thickness = 0.3
 
 [[keyboard.bindings]]
 action = "Paste"
