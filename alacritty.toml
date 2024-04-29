@@ -47,15 +47,15 @@ foreground = "0xFFFCF0"
 size = 14.0
 
 [font.bold]
-family = "Hack Nerd Font Mono"
+family = "Hack Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Hack Nerd Font Mono"
+family = "Hack Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font Mono"
+family = "Hack Nerd Font"
 style = "Regular"
 
 [cursor]
