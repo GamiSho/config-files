@@ -1,5 +1,6 @@
 # My config files.
 - nvim
+- nvim(NvChad)
 - vscode
 - alacritty
 - tmux
