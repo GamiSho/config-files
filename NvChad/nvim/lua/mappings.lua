@@ -21,4 +21,5 @@ map('i', '<C-b>', '<left>', options)
 map('i', '<C-p>', '<Up>', options)
 map('i', '<C-n>', '<Down>', options)
 map('t', '<ESC>', '<C-\\><C-n>', options)
+map("n", "<leader>ff", ":Telescope <cr>")
 
