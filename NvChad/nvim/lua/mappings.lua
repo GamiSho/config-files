@@ -2,6 +2,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 local options = { noremap = true }
+local builtin = require('telescope.builtin')
 
 map('n', 'j', 'gj', options)
 map('n', 'k', 'gk', options)
@@ -19,5 +20,7 @@ map('i', '<C-b>', '<left>', options)
 map('i', '<C-p>', '<Up>', options)
 map('i', '<C-n>', '<Down>', options)
 map('t', '<ESC>', '<C-\\><C-n>', options)
-map("n", "<leader>ff", ":Telescope <cr>")
+map('n', '<leader>ff', builtin.find_files, {})
+map('n', '<leader>fg', builtin.live_grep, {})
+map('n', '<leader>fb', builtin.buffers, {})
 
