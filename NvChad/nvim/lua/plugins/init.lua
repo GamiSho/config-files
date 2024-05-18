@@ -30,4 +30,15 @@ return {
   		},
   	},
   },
+  {
+    "vim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        file_ignore_patterns = {
+          "deps",
+          "_build",
+        },
+      },
+    },
+  },
 }
